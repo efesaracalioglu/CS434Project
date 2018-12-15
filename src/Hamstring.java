@@ -1,5 +1,6 @@
-public class Hamstring {
+public class Hamstring implements Muscle {
     public Hamstring(){
 
     }
+
 }

@@ -1,4 +1,4 @@
-public class Back {
+public class Back implements Muscle{
     public Back(){
 
     }

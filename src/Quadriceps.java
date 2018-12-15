@@ -1,5 +1,6 @@
-public class Quadriceps {
+public class Quadriceps implements Muscle {
     public Quadriceps(){
 
     }
+
 }

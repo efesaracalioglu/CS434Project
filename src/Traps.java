@@ -1,4 +1,4 @@
-public class Traps {
+public class Traps implements Muscle{
     public Traps(){
 
     }

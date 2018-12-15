@@ -1,4 +1,4 @@
-public class Triceps {
+public class Triceps implements Muscle{
     public Triceps(){
 
     }
