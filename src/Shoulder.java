@@ -1,5 +1,8 @@
 public class Shoulder extends Muscle{
-    public Shoulder(){
+    private double size;
+    private double power;
 
+    public Shoulder(double size, double power){
+        super(size, power);
     }
 }

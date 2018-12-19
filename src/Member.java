@@ -1,10 +1,10 @@
-public class Customer {
+public class Member {
     private String name;
     private String surname;
     private int age;
     private Trainer trainer;
 
-    public Customer(String name, String surname){
+    public Member(String name, String surname){
         this.setName(name);
         this.setSurname(surname);
     }

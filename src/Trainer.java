@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Trainer {
     private String name;
     private String surname;
-    private ArrayList<Customer> customers = new ArrayList<>();
+    private ArrayList<Member> members = new ArrayList<>();
 
     public Trainer(String name, String surname){
         this.setName(name);
@@ -26,11 +26,11 @@ public class Trainer {
         this.surname = surname;
     }
 
-    public ArrayList<Customer> getCustomers() {
-        return customers;
+    public ArrayList<Member> getMembers() {
+        return members;
     }
 
-    public void setCustomers(ArrayList<Customer> customers) {
-        this.customers = customers;
+    public void setMembers(ArrayList<Member> members) {
+        this.members = members;
     }
 }

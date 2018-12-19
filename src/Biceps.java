@@ -1,6 +1,8 @@
 public class Biceps extends Muscle {
-    public Biceps(){
-
+    private double size;
+    private double power;
+    public Biceps(double size, double power){
+        super(size, power);
     }
 
 }

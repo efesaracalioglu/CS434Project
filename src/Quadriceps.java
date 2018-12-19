@@ -1,6 +1,8 @@
 public class Quadriceps extends Muscle {
-    public Quadriceps(){
+    private double size;
+    private double power;
 
+    public Quadriceps(double size, double power){
+        super(size,power);
     }
-
 }
