@@ -1,4 +1,4 @@
-public class Biceps implements Muscle {
+public class Biceps extends Muscle {
     public Biceps(){
 
     }

@@ -1,4 +1,4 @@
-public class Shoulder implements Muscle{
+public class Shoulder extends Muscle{
     public Shoulder(){
 
     }

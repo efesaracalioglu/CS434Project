@@ -1,2 +1,2 @@
-public interface Muscle {
+public abstract class Muscle {
 }

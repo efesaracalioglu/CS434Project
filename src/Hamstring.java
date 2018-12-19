@@ -1,4 +1,4 @@
-public class Hamstring implements Muscle {
+public class Hamstring extends Muscle {
     public Hamstring(){
 
     }
