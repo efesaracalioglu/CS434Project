@@ -1,5 +1,6 @@
 package CS434;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -32,11 +33,12 @@ public class ExerciseInvoker implements Subscriber {
 
     @Override
     public void update() {
-        planFile = new File("plan.txt");
-
+        planFile = new File("src\\plan.txt");
+        System.out.println(planFile.exists());
         try {
             FileReader reader = new FileReader(planFile);
-            planFactory.createPlan(reader.read);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            planFactory.createPlan(bufferedReader.readLine());
         } catch (Exception e) {
 
         }
