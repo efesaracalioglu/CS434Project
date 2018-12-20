@@ -2,11 +2,7 @@ package CS434;
 
 import java.util.ArrayList;
 
-public class StiffLegDeadlift implements Exercise {
-    private Member member;
-    private static ArrayList<String> workingMuscles = new ArrayList<>();
-
-    @Override
+public class StiffLegDeadlift extends ExerciseAbstract {
     public void execute() {
         member.getBeforeDone().add(this);
     }

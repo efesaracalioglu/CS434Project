@@ -1,6 +1,10 @@
 package CS434;
 
+import org.ini4j.Wini;
+
 public class Trainer implements Subscriber {
+    private static int maxID = 0;
+    private int id;
     private String name;
     private String surname;
 
@@ -8,7 +12,14 @@ public class Trainer implements Subscriber {
         this.setName(name);
         this.setSurname(surname);
 
+        this.id = maxID + 1;
+        maxID = id;
+
         TrainerObserver.getInstance().addSubscriber(this);
+    }
+
+    public int getID() {
+        return id;
     }
 
     public String getName() {
@@ -29,7 +40,23 @@ public class Trainer implements Subscriber {
 
     @Override
     public void update() {
-        System.out.println(this + " is updated.");
+        Wini ini = TrainersData.getIni();
+        String id_str = Integer.toString(getID());
+
+        String newName = ini.get("Names", id_str, String.class);
+        String newSurname = ini.get("Surnames", id_str, String.class);
+
+        if (!name.equals(newName)) {
+            setName(newName);
+
+            System.out.println("Trainer " + id + "'s name has been changed to " + newName);
+        }
+
+        if (!surname.equals(newSurname)) {
+            setSurname(newSurname);
+
+            System.out.println("Trainer " + id + "'s surname has been changed to " + newSurname);
+        }
     }
 
     @Override

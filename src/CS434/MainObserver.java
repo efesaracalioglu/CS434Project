@@ -57,7 +57,9 @@ public abstract class MainObserver implements FileAlterationListener, Observer {
     @Override
     public void onFileChange(File file) {
         if (file.getName().equals(fileName)) {
-            for (Subscriber subscriber : getSubscribers()) {
+            for (int i = 0; i < getSubscribers().size(); i++) {
+                Subscriber subscriber = getSubscribers().get(i);
+
                 subscriber.update();
             }
         }
