@@ -1,21 +1,14 @@
 package CS434;
 
-import org.apache.commons.io.monitor.FileAlterationListener;
-import org.apache.commons.io.monitor.FileAlterationObserver;
-
-import java.io.File;
-import java.util.ArrayList;
-
-public class Trainer implements FileAlterationListener {
+public class Trainer implements Subscriber {
     private String name;
     private String surname;
-    private ArrayList<Member> members = new ArrayList<>();
 
     public Trainer(String name, String surname) {
         this.setName(name);
         this.setSurname(surname);
 
-        Observer.getInstance(ObserverType.TRAINER.ordinal()).addListener(this);
+        TrainerObserver.getInstance().addSubscriber(this);
     }
 
     public String getName() {
@@ -34,51 +27,13 @@ public class Trainer implements FileAlterationListener {
         this.surname = surname;
     }
 
-    public ArrayList<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(ArrayList<Member> members) {
-        this.members = members;
+    @Override
+    public void update() {
+        System.out.println(this + " is updated.");
     }
 
     @Override
-    public void onStart(FileAlterationObserver fileAlterationObserver) {
-
-    }
-
-    @Override
-    public void onDirectoryCreate(File file) {
-
-    }
-
-    @Override
-    public void onDirectoryChange(File file) {
-
-    }
-
-    @Override
-    public void onDirectoryDelete(File file) {
-
-    }
-
-    @Override
-    public void onFileCreate(File file) {
-
-    }
-
-    @Override
-    public void onFileChange(File file) {
-
-    }
-
-    @Override
-    public void onFileDelete(File file) {
-
-    }
-
-    @Override
-    public void onStop(FileAlterationObserver fileAlterationObserver) {
-
+    public String toString() {
+        return name + " " + surname + " [Trainer]";
     }
 }
