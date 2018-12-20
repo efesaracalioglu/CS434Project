@@ -35,6 +35,9 @@ public class Main {
 
         System.out.println(exerciseInvoker);
 
+        PlanFactory planFactory = new PlanFactory();
+        planFactory.createPlan("");
+
         // To maintain the program
         JFrame mainFrame = new JFrame();
         mainFrame.setSize(800, 800);
