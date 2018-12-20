@@ -1,8 +1,13 @@
 package CS434;
 
+import java.util.ArrayList;
+
 public class Member implements Subscriber {
     private String name;
     private String surname;
+    private ArrayList<Exercise> beforeDoneExercises;
+
+
 
     public Member(String name, String surname) {
         this.setName(name);
@@ -25,6 +30,10 @@ public class Member implements Subscriber {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public ArrayList<Exercise> getBeforeDone(){
+        return beforeDoneExercises;
     }
 
     @Override
