@@ -53,6 +53,7 @@ public class MainFrame extends JFrame implements Subscriber{
         });
         setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        update();
     }
 
     private void initialize() {
@@ -85,9 +86,9 @@ public class MainFrame extends JFrame implements Subscriber{
     private String createPlanPanel() {
         String result = "";
         ArrayList<String> exercises = exerciseInvoker.getExercises_str();
-        for (String line : exercises) {
-            System.out.println(line);
-            result += line + "\n";
+        for (int i = 2; i < exercises.size(); i++) {
+            System.out.println(exercises.get(i));
+            result += exercises.get(i) + "\n";
         }
         return result;
     }

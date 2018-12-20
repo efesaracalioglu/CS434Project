@@ -1,7 +1,6 @@
 package CS434;
 
 import org.ini4j.Wini;
-
 import java.io.File;
 
 public class MembersData implements Subscriber {

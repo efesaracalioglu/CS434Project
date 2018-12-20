@@ -18,6 +18,10 @@ public abstract class MainObserver implements FileAlterationListener, Observer {
         subscribers = new ArrayList<>();
 
         srcObserver.addListener(this);
+
+        onStart(srcObserver);
+
+
     }
 
     public static FileAlterationObserver getSrcObserver() {

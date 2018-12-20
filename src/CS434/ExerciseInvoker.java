@@ -15,6 +15,7 @@ public class ExerciseInvoker implements Subscriber {
         planFactory = new PlanFactory();
 
         PlanObserver.getInstance().addSubscriber(this);
+        update();
     }
 
     public void addExercise(Exercise exercise) {

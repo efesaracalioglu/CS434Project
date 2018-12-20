@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="commons-io-2.6" level="project" />
     <orderEntry type="library" name="swingx-all-1.6.4" level="project" />
+    <orderEntry type="library" name="ini4j-0.5.1" level="project" />
   </component>
 </module>
