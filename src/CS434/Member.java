@@ -6,7 +6,7 @@ public class Member implements Subscriber {
     private static int id;
     private String name;
     private String surname;
-    private ArrayList<Exercise> beforeDoneExercises;
+    private ArrayList<ExerciseAbstract> beforeDoneExercises;
 
     public Member(String name, String surname) {
         this.setName(name);
@@ -35,7 +35,8 @@ public class Member implements Subscriber {
         return id;
     }
 
-    public ArrayList<Exercise> getBeforeDone(){
+    public ArrayList<ExerciseAbstract> getBeforeDone(){
+
         return beforeDoneExercises;
     }
 
