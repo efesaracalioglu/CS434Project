@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class ExerciseInvoker implements Subscriber {
     private File planFile;
     private ArrayList<Exercise> exercises;
+    private ArrayList<String> exercises_str;
     private PlanFactory planFactory;
 
     public ExerciseInvoker() {
@@ -37,13 +38,13 @@ public class ExerciseInvoker implements Subscriber {
 
         try {
             FileReader reader = new FileReader(planFile);
-            ArrayList<String> exercises = new ArrayList<>();
+            exercises_str = new ArrayList<>();
             BufferedReader bufferedReader = new BufferedReader(reader);
 
             while (bufferedReader.readLine() != null)
-                exercises.add(bufferedReader.readLine());
+                exercises_str.add(bufferedReader.readLine());
 
-            planFactory.createPlan(exercises);
+            exercises = planFactory.createPlan(exercises_str);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -3,7 +3,8 @@ package CS434;
 import java.util.ArrayList;
 
 public class Member implements Subscriber {
-    private static int id;
+    private static int maxID = -1;
+    private int id;
     private String name;
     private String surname;
     private ArrayList<Exercise> beforeDoneExercises;
@@ -11,6 +12,9 @@ public class Member implements Subscriber {
     public Member(String name, String surname) {
         this.setName(name);
         this.setSurname(surname);
+
+        this.id = maxID + 1;
+        maxID = id;
 
         MemberObserver.getInstance().addSubscriber(this);
     }
@@ -31,8 +35,8 @@ public class Member implements Subscriber {
         this.surname = surname;
     }
 
-    public static int getId(){
-        return id;
+    public int getID() {
+        return this.id;
     }
 
     public ArrayList<Exercise> getBeforeDone(){
@@ -41,7 +45,12 @@ public class Member implements Subscriber {
 
     @Override
     public void update() {
-        System.out.println(this + " is updated.");
+        System.out.println("Member " + getID() + " is updated.");
+
+        String newName = MembersData.getIni().get("Names", Integer.toString(getID()), String.class);
+        System.out.println(newName);
+
+        setName(newName);
     }
 
     @Override

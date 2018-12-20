@@ -1,7 +1,8 @@
 package CS434;
 
 public class Trainer implements Subscriber {
-    private static int id;
+    private static int maxID = 0;
+    private int id;
     private String name;
     private String surname;
 
@@ -9,10 +10,13 @@ public class Trainer implements Subscriber {
         this.setName(name);
         this.setSurname(surname);
 
+        this.id = maxID + 1;
+        maxID = id;
+
         TrainerObserver.getInstance().addSubscriber(this);
     }
 
-    public static int getId(){
+    public int getID() {
         return id;
     }
 
