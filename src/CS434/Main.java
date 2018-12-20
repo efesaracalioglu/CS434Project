@@ -17,23 +17,10 @@ public class Main {
             e.printStackTrace();
         }
 
-        // Initialization
-        Member member = new Member("Bekir Onur", "Gölgedar");
-        Member member2 = new Member("Emre", "Sümengen");
-
-        Trainer trainer = new Trainer("Efe İbrahim", "Saracalıoğlu");
-
-        ExerciseInvoker exerciseInvoker = new ExerciseInvoker();
-
-        // Printing
-        System.out.println(member);
-        System.out.println(member2);
-
-        System.out.println(trainer);
-
-        System.out.println(exerciseInvoker);
 
         // To maintain the program
         MainFrame.getInstance();
     }
+
+
 }
