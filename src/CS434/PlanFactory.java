@@ -1,27 +1,59 @@
 package CS434;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class PlanFactory {
     PlanFactory() {
 
     }
 
-    public ArrayList<Exercise> createPlan(String planString) {
-        System.out.println("plan: " + planString);
-
+    public ArrayList<Exercise> createPlan(ArrayList<String> planString) {
         ArrayList<Exercise> plan = new ArrayList<>();
 
-        plan.add(new PullUp());
+        for (int i = 1; i < planString.size(); i++) {
+            String exercise_str = planString.get(i);
+            StringTokenizer tokenizer = new StringTokenizer(exercise_str);
 
-        /*String line;
-        StringTokenizer tokenizer = new StringTokenizer(planString);
+            String exercise_type;
+            ArrayList<Integer> params = new ArrayList<>();
 
-        while (tokenizer.hasMoreTokens()) {
-            line = tokenizer.nextToken();
+            exercise_type = tokenizer.nextToken();
+            while (tokenizer.hasMoreTokens())
+                params.add(Integer.parseInt(tokenizer.nextToken()));
 
-            System.out.println(line);
-        }*/
+            switch (exercise_type) {
+                case "BARBELLCURL":
+                    plan.add(new BarbellCurl());
+                    break;
+
+                case "PULLUP":
+                    plan.add(new PullUp());
+                    break;
+
+                case "BENCHPRESS":
+                    plan.add(new BenchPress());
+                    break;
+
+                case "STIFFLEG":
+                    plan.add(new StiffLegDeadlift());
+                    break;
+
+                case "BARBELLSHRUG":
+                    plan.add(new BarbellShrug());
+                    break;
+
+                case "SQUAT":
+                    plan.add(new Squat());
+                    break;
+
+                case "SKULLCRUSHER":
+                    plan.add(new SkullCrusher());
+                    break;
+            }
+
+            System.out.println(plan.get(plan.size() - 1));
+        }
 
         return plan;
     }
