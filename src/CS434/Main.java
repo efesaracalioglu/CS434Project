@@ -2,8 +2,6 @@ package CS434;
 
 import org.apache.commons.io.monitor.FileAlterationMonitor;
 
-import javax.swing.*;
-
 public class Main {
     public static void main(String[] args) {
         // Activate the observers (frequency: 1/2 sec)
@@ -35,13 +33,7 @@ public class Main {
 
         System.out.println(exerciseInvoker);
 
-        PlanFactory planFactory = new PlanFactory();
-        planFactory.createPlan("");
-
         // To maintain the program
-        JFrame mainFrame = new JFrame();
-        mainFrame.setSize(800, 800);
-        mainFrame.setLocation(100, 100);
-        mainFrame.setVisible(true);
+        MainFrame.getInstance();
     }
 }

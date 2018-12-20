@@ -34,13 +34,18 @@ public class ExerciseInvoker implements Subscriber {
     @Override
     public void update() {
         planFile = new File("src\\plan.txt");
-        System.out.println(planFile.exists());
+
         try {
             FileReader reader = new FileReader(planFile);
+            ArrayList<String> exercises = new ArrayList<>();
             BufferedReader bufferedReader = new BufferedReader(reader);
-            planFactory.createPlan(bufferedReader.readLine());
-        } catch (Exception e) {
 
+            while (bufferedReader.readLine() != null)
+                exercises.add(bufferedReader.readLine());
+
+            planFactory.createPlan(exercises);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         System.out.println(this + " is updated.");
