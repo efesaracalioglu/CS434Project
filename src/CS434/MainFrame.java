@@ -1,16 +1,17 @@
 package CS434;
 
+import javax.print.DocFlavor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import org.jdesktop.swingx.JXLabel;
 
 public class MainFrame extends JFrame implements Subscriber{
-    private JPanel panel;
     private JLabel nameLb;
     private JLabel resultLb;
-    private JPanel planPn;
+    private JXLabel planLb;
     private JButton testBt;
     Member member1;
     Member member2;
@@ -25,31 +26,31 @@ public class MainFrame extends JFrame implements Subscriber{
     private MainFrame() {
         initialize();
         PlanObserver.getInstance().addSubscriber(this);
-        panel = new JPanel();
+        JPanel panel = new JPanel();
         setSize(800, 800);
         setLocation(100, 100);
-        /*testBt = new JButton();
+        testBt = new JButton();
         nameLb = new JLabel();
-        planPn = new JPanel();
+        planLb = new JXLabel();
+        planLb.setLineWrap(true);
         resultLb = new JLabel();
         testBt.setText("Test");
         nameLb.setText("Plan For " + member2.getName() + " " + member2.getSurname());
-        planPn = createPlanPanel();
+        planLb.setText(createPlanPanel());
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(nameLb);
-        panel.add(planPn);
+        panel.add(planLb);
         panel.add(testBt);
-        panel.add(resultLb);*/
-
+        panel.add(resultLb);
 
         add(panel);
-        /*testBt.addActionListener(new ActionListener() {
+        testBt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resultLb.setText(exerciseInvoker.isSuitable() ? "yes" : "no");
             }
-        });*/
+        });
         setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -74,23 +75,21 @@ public class MainFrame extends JFrame implements Subscriber{
 
     @Override
     public void update() {
-        //testBt.setText("Test");
-        //nameLb.setText("Plan For " + member2.getName() + " " + member2.getSurname());
-        //planPn = createPlanPanel();
-        //planPn.updateUI();
-        panel = createPlanPanel();
+        testBt.setText("Test");
+        nameLb.setText("Plan For " + member2.getName() + " " + member2.getSurname());
+        planLb.setText(createPlanPanel());
+        planLb.updateUI();
+
     }
 
-    private JPanel createPlanPanel() {
-        JPanel planPanel = new JPanel();
-        BoxLayout boxlayout = new BoxLayout(planPanel, BoxLayout.Y_AXIS);
-        planPanel.setLayout(boxlayout);
-
+    private String createPlanPanel() {
+        String result = "";
         ArrayList<String> exercises = exerciseInvoker.getExercises_str();
         for (String line : exercises) {
-            planPanel.add(new Label(line));
+            System.out.println(line);
+            result += line + "\n";
         }
-        return planPanel;
+        return result;
     }
 
 }
