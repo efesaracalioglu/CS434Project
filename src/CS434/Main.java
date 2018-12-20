@@ -39,9 +39,6 @@ public class Main {
         planFactory.createPlan("");
 
         // To maintain the program
-        JFrame mainFrame = new JFrame();
-        mainFrame.setSize(800, 800);
-        mainFrame.setLocation(100, 100);
-        mainFrame.setVisible(true);
+        MainFrame.getInstance();
     }
 }
