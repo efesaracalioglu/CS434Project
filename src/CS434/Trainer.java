@@ -1,6 +1,7 @@
 package CS434;
 
 public class Trainer implements Subscriber {
+    private static int id;
     private String name;
     private String surname;
 
@@ -9,6 +10,10 @@ public class Trainer implements Subscriber {
         this.setSurname(surname);
 
         TrainerObserver.getInstance().addSubscriber(this);
+    }
+
+    public static int getId(){
+        return id;
     }
 
     public String getName() {
