@@ -1,5 +1,7 @@
 package CS434;
 
+import org.ini4j.Wini;
+
 import java.util.ArrayList;
 
 public class Member implements Subscriber {
@@ -36,7 +38,7 @@ public class Member implements Subscriber {
     }
 
     public int getID() {
-        return this.id;
+        return id;
     }
 
     public ArrayList<ExerciseAbstract> getBeforeDone(){
@@ -46,12 +48,23 @@ public class Member implements Subscriber {
 
     @Override
     public void update() {
-        System.out.println("Member " + getID() + " is updated.");
+        Wini ini = MembersData.getIni();
+        String id_str = Integer.toString(getID());
 
-        String newName = MembersData.getIni().get("Names", Integer.toString(getID()), String.class);
-        System.out.println(newName);
+        String newName = ini.get("Names", id_str, String.class);
+        String newSurname = ini.get("Surnames", id_str, String.class);
 
-        setName(newName);
+        if (!name.equals(newName)) {
+            setName(newName);
+
+            System.out.println("Member " + id + "'s name has been changed to " + newName);
+        }
+
+        if (!surname.equals(newSurname)) {
+            setSurname(newSurname);
+
+            System.out.println("Member " + id + "'s surname has been changed to " + newSurname);
+        }
     }
 
     @Override
