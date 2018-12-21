@@ -20,12 +20,24 @@ public class ExerciseInvoker implements ISubscriber {
     }
 
     public void executeAll() {
-        for (Exercise exercise : exercises) {
-            exercise.execute();
+        if (isSuitable()) {
+            for (Exercise exercise : exercises) {
+                exercise.execute();
+            }
         }
     }
 
     public boolean isSuitable() {
+        for (Constraint constraint:PlanData.getInstance().getPlanMember().getConstraints()) {
+            if (constraint != null)
+                System.out.println(constraint);
+        }
+
+        for (Constraint constraint:PlanData.getInstance().getPlanMember().getConstraints()) {
+            if (!constraint.isMet())
+                return false;
+        }
+
         return true;
     }
 
