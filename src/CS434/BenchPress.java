@@ -2,11 +2,15 @@ package CS434;
 
 import java.util.ArrayList;
 
-public class BenchPress extends ExerciseAbstract {
-    public static ArrayList<String> getWorkingMuscles(){
-        workingMuscles.add(Chest.type);
-        workingMuscles.add(Triceps.type);
+public class BenchPress extends Exercise {
 
-        return workingMuscles;
+    @Override
+    public ArrayList<String> getTargetMuscles() {
+        ArrayList<String> targetMuscles = new ArrayList<>();
+
+        targetMuscles.add(Chest.type);
+        targetMuscles.add(Triceps.type);
+
+        return targetMuscles;
     }
 }

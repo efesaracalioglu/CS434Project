@@ -8,8 +8,8 @@ public class PlanFactory {
 
     }
 
-    public ArrayList<Exercise> createPlan(ArrayList<String> planString) {
-        ArrayList<Exercise> plan = new ArrayList<>();
+    public ArrayList<ICommand> createPlan(ArrayList<String> planString) {
+        ArrayList<ICommand> plan = new ArrayList<>();
 
         for (int i = 2; i < planString.size(); i++) {
             String exercise_str = planString.get(i);

@@ -4,13 +4,14 @@ import org.ini4j.Wini;
 
 import java.io.File;
 
-public class TrainersData implements Subscriber {
+public class TrainersData implements ISubscriber {
     private static TrainersData instance = new TrainersData();
     private static Wini ini;
 
     private TrainersData() {
-        update();
         MemberObserver.getInstance().addSubscriber(this);
+
+        update();
     }
 
     public static Wini getIni() {

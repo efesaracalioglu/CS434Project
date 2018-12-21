@@ -1,26 +1,21 @@
 package CS434;
 
-import javax.print.DocFlavor;
+import org.jdesktop.swingx.JXLabel;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import org.jdesktop.swingx.JXLabel;
 
-public class MainFrame extends JFrame implements Subscriber{
+public class MainFrame extends JFrame implements ISubscriber {
+    private static MainFrame ourInstance = new MainFrame();
+    Member member;
+    Trainer trainer;
+    ExerciseInvoker exerciseInvoker;
     private JLabel nameLb;
     private JLabel resultLb;
     private JXLabel planLb;
     private JButton testBt;
-    Member member;
-    Trainer trainer;
-    ExerciseInvoker exerciseInvoker;
-    private static MainFrame ourInstance = new MainFrame();
-
-    public static MainFrame getInstance() {
-        return ourInstance;
-    }
 
     private MainFrame() {
         initialize();
@@ -53,6 +48,10 @@ public class MainFrame extends JFrame implements Subscriber{
         setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         update();
+    }
+
+    public static MainFrame getInstance() {
+        return ourInstance;
     }
 
     private void initialize() {

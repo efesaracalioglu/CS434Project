@@ -1,5 +1,5 @@
 package CS434;
 
-public interface Subscriber {
+public interface ISubscriber {
     void update();
 }

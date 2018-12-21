@@ -6,10 +6,10 @@ import org.apache.commons.io.monitor.FileAlterationObserver;
 import java.io.File;
 import java.util.ArrayList;
 
-public abstract class MainObserver implements FileAlterationListener, Observer {
+public abstract class MainObserver implements FileAlterationListener, IObserver {
     private static FileAlterationObserver srcObserver = new FileAlterationObserver(new File(new File("."), "src"));
 
-    private ArrayList<Subscriber> subscribers;
+    private ArrayList<ISubscriber> subscribers;
     private String fileName;
 
     protected MainObserver(String fileName) {
@@ -62,7 +62,7 @@ public abstract class MainObserver implements FileAlterationListener, Observer {
     public void onFileChange(File file) {
         if (file.getName().equals(fileName)) {
             for (int i = 0; i < getSubscribers().size(); i++) {
-                Subscriber subscriber = getSubscribers().get(i);
+                ISubscriber subscriber = getSubscribers().get(i);
 
                 subscriber.update();
             }
@@ -75,12 +75,12 @@ public abstract class MainObserver implements FileAlterationListener, Observer {
     }
 
     @Override
-    public void addSubscriber(Subscriber subscriber) {
+    public void addSubscriber(ISubscriber subscriber) {
         subscribers.add(subscriber);
     }
 
     @Override
-    public ArrayList<Subscriber> getSubscribers() {
+    public ArrayList<ISubscriber> getSubscribers() {
         return subscribers;
     }
 }

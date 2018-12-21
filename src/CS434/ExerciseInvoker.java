@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class ExerciseInvoker implements Subscriber {
+public class ExerciseInvoker implements ISubscriber {
     private File planFile;
-    private ArrayList<Exercise> exercises;
+    private ArrayList<ICommand> exercises;
     private ArrayList<String> exercises_str = new ArrayList<>();
     private PlanFactory planFactory;
 
@@ -18,12 +18,12 @@ public class ExerciseInvoker implements Subscriber {
         update();
     }
 
-    public void addExercise(Exercise exercise) {
+    public void addExercise(ICommand exercise) {
         exercises.add(exercise);
     }
 
     public void executeAll() {
-        for (Exercise exercise : exercises) {
+        for (ICommand exercise : exercises) {
             exercise.execute();
         }
     }

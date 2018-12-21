@@ -2,10 +2,13 @@ package CS434;
 
 import java.util.ArrayList;
 
-public class SkullCrusher extends ExerciseAbstract {
-    public static ArrayList<String> getWorkingMuscles(){
-        workingMuscles.add(Triceps.type);
+public class SkullCrusher extends Exercise {
+    @Override
+    public ArrayList<String> getTargetMuscles() {
+        ArrayList<String> targetMuscles = new ArrayList<>();
 
-        return workingMuscles;
+        targetMuscles.add(Triceps.type);
+
+        return targetMuscles;
     }
 }

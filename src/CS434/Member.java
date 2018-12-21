@@ -4,12 +4,12 @@ import org.ini4j.Wini;
 
 import java.util.ArrayList;
 
-public class Member implements Subscriber {
+public class Member implements ISubscriber {
     private static int maxID = -1;
     private int id;
     private String name;
     private String surname;
-    private ArrayList<ExerciseAbstract> beforeDoneExercises;
+    private ArrayList<Exercise> beforeDoneExercises;
 
     public Member(String name, String surname) {
         this.setName(name);
@@ -42,7 +42,7 @@ public class Member implements Subscriber {
         return id;
     }
 
-    public ArrayList<ExerciseAbstract> getBeforeDone(){
+    public ArrayList<Exercise> getExerciseHistory() {
 
         return beforeDoneExercises;
     }

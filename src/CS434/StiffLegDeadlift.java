@@ -2,14 +2,13 @@ package CS434;
 
 import java.util.ArrayList;
 
-public class StiffLegDeadlift extends ExerciseAbstract {
-    public void execute() {
-        member.getBeforeDone().add(this);
-    }
+public class StiffLegDeadlift extends Exercise {
+    @Override
+    public ArrayList<String> getTargetMuscles() {
+        ArrayList<String> targetMuscles = new ArrayList<>();
 
-    public static ArrayList<String> getWorkingMuscles(){
-        workingMuscles.add(Hamstring.type);
+        targetMuscles.add(Hamstring.type);
 
-        return workingMuscles;
+        return targetMuscles;
     }
 }
