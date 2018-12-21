@@ -16,6 +16,8 @@ public class Trainer implements ISubscriber {
         maxID = id;
 
         TrainerObserver.getInstance().addSubscriber(this);
+
+        System.out.println(this + " created.");
     }
 
     public int getID() {
@@ -57,6 +59,11 @@ public class Trainer implements ISubscriber {
 
             System.out.println("Trainer " + id + "'s surname has been changed to " + newSurname);
         }
+    }
+
+    @Override
+    public int getPriority() {
+        return 0;
     }
 
     @Override

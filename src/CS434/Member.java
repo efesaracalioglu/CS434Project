@@ -1,18 +1,21 @@
 package CS434;
 
-import CS434.Exercises.ExerciseAbstract;
+import CS434.Exercises.Exercise;
 import org.ini4j.Wini;
 
 import java.util.ArrayList;
 
 public class Member implements ISubscriber {
     private static int maxID = -1;
+
     private int id;
     private String name;
     private String surname;
-    private ArrayList<Exercise> beforeDoneExercises;
+    private ArrayList<Exercise> exercisesDone;
 
     public Member(String name, String surname) {
+        exercisesDone = new ArrayList<>();
+
         this.setName(name);
         this.setSurname(surname);
 
@@ -20,6 +23,7 @@ public class Member implements ISubscriber {
         maxID = id;
 
         MemberObserver.getInstance().addSubscriber(this);
+
         System.out.println(this + " created.");
     }
 
@@ -44,8 +48,7 @@ public class Member implements ISubscriber {
     }
 
     public ArrayList<Exercise> getExerciseHistory() {
-
-        return beforeDoneExercises;
+        return exercisesDone;
     }
 
     @Override
@@ -67,6 +70,11 @@ public class Member implements ISubscriber {
 
             System.out.println("Member " + id + "'s surname has been changed to " + newSurname);
         }
+    }
+
+    @Override
+    public int getPriority() {
+        return 0;
     }
 
     @Override

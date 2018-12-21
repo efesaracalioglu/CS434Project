@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class PlanFactory {
-    PlanFactory() {
+    public static ArrayList<Exercise> createPlan(ArrayList<String> planString) {
+        ArrayList<Exercise> plan = new ArrayList<>();
 
-    }
-
-    public ArrayList<ICommand> createPlan(ArrayList<String> planString) {
-        ArrayList<ICommand> plan = new ArrayList<>();
+        Member member = PlanData.getInstance().getPlanMember();
 
         for (int i = 2; i < planString.size(); i++) {
             String exercise_str = planString.get(i);
@@ -26,35 +24,37 @@ public class PlanFactory {
 
             switch (exercise_type) {
                 case "BARBELLCURL":
-                    plan.add(new BarbellCurl());
+                    plan.add(new BarbellCurl(member, params.get(0), params.get(1)));
                     break;
 
                 case "PULLUP":
-                    plan.add(new PullUp());
+                    plan.add(new PullUp(member, params.get(0), params.get(1)));
                     break;
 
                 case "BENCHPRESS":
-                    plan.add(new BenchPress());
+                    plan.add(new BenchPress(member, params.get(0), params.get(1)));
                     break;
 
                 case "STIFFLEG":
-                    plan.add(new StiffLegDeadlift());
+                    plan.add(new StiffLegDeadlift(member, params.get(0), params.get(1)));
                     break;
 
                 case "BARBELLSHRUG":
-                    plan.add(new BarbellShrug());
+                    plan.add(new BarbellShrug(member, params.get(0), params.get(1)));
                     break;
 
                 case "SQUAT":
-                    plan.add(new Squat());
+                    plan.add(new Squat(member, params.get(0), params.get(1)));
                     break;
 
                 case "SKULLCRUSHER":
-                    plan.add(new SkullCrusher());
+                    plan.add(new SkullCrusher(member, params.get(0), params.get(1)));
+                    break;
+
+                case "OVERHEADPRESS":
+                    plan.add(new OverheadPress(member, params.get(0), params.get(1)));
                     break;
             }
-
-            System.out.println(plan.get(plan.size() - 1));
         }
 
         return plan;

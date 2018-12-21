@@ -17,10 +17,7 @@ public class Main {
             e.printStackTrace();
         }
 
-
         // To maintain the program
         MainFrame.getInstance();
     }
-
-
 }

@@ -11,8 +11,9 @@ public class MembersData implements ISubscriber {
     private static Wini ini;
 
     private MembersData() {
-        update();
         MemberObserver.getInstance().addSubscriber(this);
+
+        update();
     }
 
     public static Wini getIni() {
@@ -23,13 +24,13 @@ public class MembersData implements ISubscriber {
         return instance;
     }
 
-    public static void initializeMembers() {
+    public static void createMembers() {
         int memberCount = ini.get("General", "memberCount", Integer.class);
+
         for (int i = 0; i < memberCount; i++) {
             String name = ini.get("Names", Integer.toString(i), String.class);
-            System.out.println(name);
             String surname = ini.get("Surnames", Integer.toString(i), String.class);
-            System.out.println(surname);
+
             members.add(new Member(name, surname));
         }
     }
@@ -45,5 +46,10 @@ public class MembersData implements ISubscriber {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public int getPriority() {
+        return 0;
     }
 }

@@ -4,24 +4,22 @@ import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationObserver;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public abstract class MainObserver implements FileAlterationListener, IObserver {
     private static FileAlterationObserver srcObserver = new FileAlterationObserver(new File(new File("."), "src"));
 
-    private ArrayList<ISubscriber> subscribers;
+    private PriorityQueue<ISubscriber> subscribers;
     private String fileName;
 
     protected MainObserver(String fileName) {
-        this.fileName = fileName;
+        subscribers = new PriorityQueue<>(20, new SubscriberComparator());
 
-        subscribers = new ArrayList<>();
+        this.fileName = fileName;
 
         srcObserver.addListener(this);
 
-        onStart(srcObserver);
-
-
+        notifyAllSubscribers();
     }
 
     public static FileAlterationObserver getSrcObserver() {
@@ -61,11 +59,7 @@ public abstract class MainObserver implements FileAlterationListener, IObserver 
     @Override
     public void onFileChange(File file) {
         if (file.getName().equals(fileName)) {
-            for (int i = 0; i < getSubscribers().size(); i++) {
-                ISubscriber subscriber = getSubscribers().get(i);
-
-                subscriber.update();
-            }
+            notifyAllSubscribers();
         }
     }
 
@@ -75,12 +69,23 @@ public abstract class MainObserver implements FileAlterationListener, IObserver 
     }
 
     @Override
+    public void notifyAllSubscribers() {
+        PriorityQueue<ISubscriber> temp_subscribers = new PriorityQueue<>(getSubscribers());
+
+        while (temp_subscribers.size() > 0) {
+            ISubscriber subscriber = temp_subscribers.poll();
+
+            subscriber.update();
+        }
+    }
+
+    @Override
     public void addSubscriber(ISubscriber subscriber) {
         subscribers.add(subscriber);
     }
 
     @Override
-    public ArrayList<ISubscriber> getSubscribers() {
+    public PriorityQueue<ISubscriber> getSubscribers() {
         return subscribers;
     }
 }

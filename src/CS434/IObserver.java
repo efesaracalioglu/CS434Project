@@ -1,9 +1,10 @@
 package CS434;
 
-import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public interface IObserver {
     void addSubscriber(ISubscriber subscriber);
+    void notifyAllSubscribers();
 
-    ArrayList<ISubscriber> getSubscribers();
+    PriorityQueue<ISubscriber> getSubscribers();
 }
