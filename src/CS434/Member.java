@@ -19,6 +19,7 @@ public class Member implements Subscriber {
         maxID = id;
 
         MemberObserver.getInstance().addSubscriber(this);
+        System.out.println(this + " created.");
     }
 
     public String getName() {
