@@ -13,6 +13,7 @@ public class MembersData implements ISubscriber {
     private MembersData() {
         MemberObserver.getInstance().addSubscriber(this);
 
+        // Update once.
         update();
     }
 
@@ -30,8 +31,28 @@ public class MembersData implements ISubscriber {
         for (int i = 0; i < memberCount; i++) {
             String name = ini.get("Names", Integer.toString(i), String.class);
             String surname = ini.get("Surnames", Integer.toString(i), String.class);
+            Member member = new Member(name, surname);
 
-            members.add(new Member(name, surname));
+            loadConstraints(member);
+
+            members.add(member);
+        }
+    }
+
+    public static void loadConstraints(Member member) {
+        String constraintSet = ini.get("Constraints", Integer.toString(member.getID()), String.class);
+        constraintSet = String.copyValueOf(constraintSet.toCharArray(), 1, constraintSet.length() - 2);
+
+        int value = 0;
+        while (value < constraintSet.length()) {
+            Constraint constraint;
+
+            Integer constraint_int = Integer.parseInt(String.copyValueOf(constraintSet.toCharArray(), value, 1));
+            constraint = ConstraintFactory.createConstraint(constraint_int, member);
+
+            member.addConstraints(constraint);
+
+            value += 3;
         }
     }
 

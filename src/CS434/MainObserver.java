@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.PriorityQueue;
 
 public abstract class MainObserver implements FileAlterationListener, IObserver {
+    // The main observer's observer.
     private static FileAlterationObserver srcObserver = new FileAlterationObserver(new File(new File("."), "src"));
 
     private PriorityQueue<ISubscriber> subscribers;
@@ -17,6 +18,7 @@ public abstract class MainObserver implements FileAlterationListener, IObserver 
 
         this.fileName = fileName;
 
+        // The main observer is a listener at the same time.
         srcObserver.addListener(this);
 
         notifyAllSubscribers();

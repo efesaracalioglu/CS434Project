@@ -3,7 +3,9 @@ package CS434;
 import org.ini4j.Wini;
 
 public class Trainer implements ISubscriber {
+    // Auto-increment
     private static int maxID = -1;
+
     private int id;
     private String name;
     private String surname;

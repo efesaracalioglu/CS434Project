@@ -1,20 +1,8 @@
 
-3 <- Enter member ID here.
+0 <- Enter member ID here.
 
 1 <- Enter trainer ID here.
 
-BARBELLCURL 40 16
+DEADLIFT 5 10
 
-BENCHPRESS 2 8
-
-PULLUP 3 11
-
-DEADLIFT 2 15
-
-BARBELLSHRUG 3 15
-
-SQUAT 1 5
-
-SKULLCRUSHER 5 10
-
-OVERHEADPRESS 7 8
+SQUAT 5 10

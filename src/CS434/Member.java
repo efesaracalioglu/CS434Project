@@ -6,15 +6,18 @@ import org.ini4j.Wini;
 import java.util.ArrayList;
 
 public class Member implements ISubscriber {
+    // Auto-increment
     private static int maxID = -1;
 
     private int id;
     private String name;
     private String surname;
     private ArrayList<Exercise> exercisesDone;
+    private ArrayList<Constraint> constraints;
 
     public Member(String name, String surname) {
         exercisesDone = new ArrayList<>();
+        constraints = new ArrayList<>();
 
         this.setName(name);
         this.setSurname(surname);
@@ -29,6 +32,14 @@ public class Member implements ISubscriber {
 
     public String getName() {
         return name;
+    }
+
+    public void addConstraints(Constraint constraint) {
+        constraints.add(constraint);
+    }
+
+    public ArrayList<Constraint> getConstraints() {
+        return constraints;
     }
 
     public void setName(String name) {

@@ -16,6 +16,6 @@ OVERHEADPRESS <SETS> <REPS>
 
 Constrains list:
 0: This user cannot do any exercises which require biceps. (BicepsDisability)
-1: This user cannot do any plans with more than 3 exercises. (HardLearning)
+1: This user cannot do any plans with more than 2 exercises. (HardLearning)
 2: This user cannot do SQUAT and DEADLIFT in one plan. (WeakLegs)
 3: This user cannot do the same exercises in one day. (NotRepeat)

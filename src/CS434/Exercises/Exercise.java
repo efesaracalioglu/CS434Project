@@ -32,6 +32,10 @@ public abstract class Exercise implements ICommand {
         return sets;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setReps(int reps) {
         this.reps = reps;
     }

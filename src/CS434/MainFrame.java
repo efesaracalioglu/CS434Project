@@ -11,29 +11,32 @@ import java.util.ArrayList;
 
 public class MainFrame extends JFrame implements ISubscriber {
     private static MainFrame ourInstance = new MainFrame();
-    Member member;
+
+    Member planMember;
     Trainer trainer;
     ExerciseInvoker exerciseInvoker;
     private JXLabel nameLb;
     private JLabel resultLb;
     private JXLabel planLb;
-    private JButton testBt;
+    private JButton verifyAndApplyButton;
 
     private MainFrame() {
-        initialize();
+        programInit();
 
+        // Subscribe all.
         PlanObserver.getInstance().addSubscriber(this);
         MemberObserver.getInstance().addSubscriber(this);
         TrainerObserver.getInstance().addSubscriber(this);
 
+        ///region UI Design
         setSize(600, 600);
         setLocation(100, 100);
 
         Font font = new Font("Verdana", Font.BOLD, 30);
         Font font_small = new Font("Verdana", Font.BOLD, 20);
 
-        testBt = new JButton();
-        testBt.setText("Test the plan!");
+        verifyAndApplyButton = new JButton();
+        verifyAndApplyButton.setText("Verify and apply!");
 
         nameLb = new JXLabel();
         nameLb.setLineWrap(true);
@@ -56,18 +59,26 @@ public class MainFrame extends JFrame implements ISubscriber {
         panel.add(new JLabel("    "));
         panel.add(planLb);
         panel.add(new JLabel("    "));
-        panel.add(testBt);
+        panel.add(verifyAndApplyButton);
         panel.add(new JLabel("    "));
         panel.add(resultLb);
         panel.setBackground(Color.BLACK);
 
         add(panel);
-        testBt.addActionListener(new ActionListener() {
+
+        setVisible(true);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        ///endregion
+
+        // Test button functionality
+        verifyAndApplyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (exerciseInvoker.isSuitable()) {
-                    resultLb.setText("It is appropriate.");
+                    resultLb.setText("It is appropriate. The plan is executed.");
                     resultLb.setForeground(Color.green);
+
+                    exerciseInvoker.executeAll();
                 }
                 else {
                     resultLb.setText("This plan is not proper for the user.");
@@ -75,9 +86,8 @@ public class MainFrame extends JFrame implements ISubscriber {
                 }
             }
         });
-        setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        // Update once.
         update();
     }
 
@@ -85,7 +95,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         return ourInstance;
     }
 
-    private void initialize() {
+    private void programInit() {
         MembersData.createMembers();
         TrainersData.createTrainers();
 
@@ -96,13 +106,11 @@ public class MainFrame extends JFrame implements ISubscriber {
     public void update() {
         resultLb.setText("");
 
-        member = PlanData.getInstance().getPlanMember();
+        planMember = PlanData.getInstance().getPlanMember();
         trainer = PlanData.getInstance().getPlanTrainer();
 
-        nameLb.setText("Plan for " + member+"\nwritten by "+trainer);
+        nameLb.setText("Plan for " + planMember + "\nwritten by " + trainer);
         planLb.setText(createPlanText());
-
-        planLb.updateUI();
     }
 
     private String createPlanText() {
@@ -122,6 +130,8 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     @Override
     public int getPriority() {
+        // It has the lowest priority.
+        // It shows everything, after all changes.
         return -50;
     }
 }

@@ -6,5 +6,6 @@ public interface IObserver {
     void addSubscriber(ISubscriber subscriber);
     void notifyAllSubscribers();
 
+    // Priority queue.
     PriorityQueue<ISubscriber> getSubscribers();
 }

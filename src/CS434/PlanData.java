@@ -1,7 +1,5 @@
 package CS434;
 
-import org.ini4j.Wini;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,6 +16,7 @@ public class PlanData implements ISubscriber {
     private PlanData() {
         PlanObserver.getInstance().addSubscriber(this);
 
+        // Update once.
         update();
     }
 

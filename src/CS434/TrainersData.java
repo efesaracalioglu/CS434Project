@@ -13,6 +13,7 @@ public class TrainersData implements ISubscriber {
     private TrainersData() {
         TrainerObserver.getInstance().addSubscriber(this);
 
+        // Update once.
         update();
     }
 

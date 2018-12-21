@@ -1,7 +1,6 @@
 package CS434.Exercises;
 
 import CS434.Member;
-import CS434.Muscles.Back;
 import CS434.Muscles.Biceps;
 
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ public class BarbellCurl extends Exercise {
 
         ArrayList<String> targetMuscles = new ArrayList<>();
         targetMuscles.add(Biceps.TYPE);
-        targetMuscles.add(Back.TYPE);
 
         return targetMuscles;
     }
