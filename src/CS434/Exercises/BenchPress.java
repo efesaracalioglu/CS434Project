@@ -1,4 +1,7 @@
-package CS434;
+package CS434.Exercises;
+
+import CS434.Muscles.Chest;
+import CS434.Muscles.Triceps;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,7 @@
-package CS434;
+package CS434.Exercises;
+
+import CS434.Exercises.ExerciseAbstract;
+import CS434.Muscles.Hamstring;
 
 import java.util.ArrayList;
 

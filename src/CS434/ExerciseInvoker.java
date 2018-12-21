@@ -1,5 +1,7 @@
 package CS434;
 
+import CS434.Exercises.Exercise;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
