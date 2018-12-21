@@ -1,4 +1,4 @@
-package CS434;
+package CS434.Muscles;
 
 public abstract class Muscle {
     private double size;

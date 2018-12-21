@@ -1,5 +1,6 @@
 package CS434;
 
+import CS434.Exercises.ExerciseAbstract;
 import org.ini4j.Wini;
 
 import java.util.ArrayList;

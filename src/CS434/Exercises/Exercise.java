@@ -1,4 +1,4 @@
-package CS434;
+package CS434.Exercises;
 
 import java.util.ArrayList;
 

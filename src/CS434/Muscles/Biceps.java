@@ -1,4 +1,4 @@
-package CS434;
+package CS434.Muscles;
 
 public class Biceps extends Muscle {
     public static final String TYPE = "Biceps";

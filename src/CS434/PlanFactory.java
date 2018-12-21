@@ -1,5 +1,7 @@
 package CS434;
 
+import CS434.Exercises.*;
+
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 

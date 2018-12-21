@@ -56,8 +56,10 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     private void initialize() {
         MembersData.initializeMembers();
+        TrainersData.initializeTrainers();
+
         member = MembersData.getMembers().get(0);
-        trainer = new Trainer("Efe İbrahim", "Saracalıoğlu");
+        trainer = TrainersData.getTrainers().get(0);
 
         exerciseInvoker = new ExerciseInvoker();
 

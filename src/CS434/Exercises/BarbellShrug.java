@@ -1,4 +1,8 @@
-package CS434;
+package CS434.Exercises;
+
+import CS434.Muscles.Back;
+import CS434.Muscles.Shoulder;
+import CS434.Muscles.Traps;
 
 import java.util.ArrayList;
 
