@@ -13,8 +13,7 @@ public class MainFrame extends JFrame implements Subscriber{
     private JLabel resultLb;
     private JXLabel planLb;
     private JButton testBt;
-    Member member1;
-    Member member2;
+    Member member;
     Trainer trainer;
     ExerciseInvoker exerciseInvoker;
     private static MainFrame ourInstance = new MainFrame();
@@ -35,7 +34,7 @@ public class MainFrame extends JFrame implements Subscriber{
         planLb.setLineWrap(true);
         resultLb = new JLabel();
         testBt.setText("Test");
-        nameLb.setText("Plan For " + member2.getName() + " " + member2.getSurname());
+        nameLb.setText("Plan For " + member.getName() + " " + member.getSurname());
         planLb.setText(createPlanPanel());
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -57,17 +56,13 @@ public class MainFrame extends JFrame implements Subscriber{
     }
 
     private void initialize() {
-        // Initialization
-        member1 = new Member("Bekir Onur", "Gölgedar");
-        member2 = new Member("Emre", "Sümengen");
-
+        MembersData.initializeMembers();
+        member = MembersData.getMembers().get(0);
         trainer = new Trainer("Efe İbrahim", "Saracalıoğlu");
 
         exerciseInvoker = new ExerciseInvoker();
 
         // Printing
-        System.out.println(member1);
-        System.out.println(member2);
 
         System.out.println(trainer);
 
@@ -77,7 +72,7 @@ public class MainFrame extends JFrame implements Subscriber{
     @Override
     public void update() {
         testBt.setText("Test");
-        nameLb.setText("Plan For " + member2.getName() + " " + member2.getSurname());
+        nameLb.setText("Plan For " + member.getName() + " " + member.getSurname());
         planLb.setText(createPlanPanel());
         planLb.updateUI();
 
