@@ -35,7 +35,7 @@ public class PlanFactory {
                     plan.add(new BenchPress(member, params.get(0), params.get(1)));
                     break;
 
-                case "STIFFLEG":
+                case "DEADLIFT":
                     plan.add(new StiffLegDeadlift(member, params.get(0), params.get(1)));
                     break;
 

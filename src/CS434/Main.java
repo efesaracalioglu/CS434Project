@@ -17,7 +17,6 @@ public class Main {
             e.printStackTrace();
         }
 
-        // To maintain the program
-        MainFrame.getInstance();
+        MainFrame.getInstance().setVisible(true);
     }
 }

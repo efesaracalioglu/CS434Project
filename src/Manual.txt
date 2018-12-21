@@ -1,0 +1,21 @@
+	(*) Developer can easily add new commands.
+
+Command list:
+BARBELLCURL <SETS> <REPS>
+PULLUP <SETS> <REPS>
+BENCHPRESS <SETS> <REPS>
+DEADLIFT <SETS> <REPS>
+BARBELLSHRUG <SETS> <REPS>
+SQUAT <SETS> <REPS>
+SKULLCRUSHER <SETS> <REPS>
+OVERHEADPRESS <SETS> <REPS>
+
+	(!) Try to not break the rule of plan.txt when doing addition.
+
+	(*) Developer can easily add new constrains.
+
+Constrains list:
+0: This user cannot do any exercises which require biceps. (BicepsDisability)
+1: This user cannot do any plans with more than 3 exercises. (HardLearning)
+2: This user cannot do SQUAT and DEADLIFT in one plan. (WeakLegs)
+3: This user cannot do the same exercises in one day. (NotRepeat)

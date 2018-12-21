@@ -60,8 +60,8 @@ public class PlanData implements ISubscriber {
             e.printStackTrace();
         }
 
-        planMember = MembersData.getMembers().get(Integer.parseInt(plan_lines.get(0)));
-        planTrainer = TrainersData.getTrainers().get(Integer.parseInt(plan_lines.get(1)));
+        planMember = MembersData.getMembers().get(Integer.parseInt(Character.toString(plan_lines.get(0).charAt(0))));
+        planTrainer = TrainersData.getTrainers().get(Integer.parseInt(Character.toString(plan_lines.get(1).charAt(0))));
     }
 
     @Override
